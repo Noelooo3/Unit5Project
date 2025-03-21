@@ -1,12 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
+    [SerializeField] private NetworkObject networkObject;
     [SerializeField] private Rigidbody rigidbody;
 
+    public void Spawn()
+    {
+        networkObject.Spawn();
+    }
+    
     public void Shoot(float force)
     {
         rigidbody.AddForce(transform.forward * force);
@@ -14,6 +21,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Destroy(this.gameObject);
+        networkObject.Despawn();
     }
 }

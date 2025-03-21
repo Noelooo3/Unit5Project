@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting : NetworkBehaviour
 {
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform shootingPoint;
@@ -11,10 +12,14 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner)
+            return;
+        
         if (Input.GetMouseButtonDown(0))
         {
             // We should do an object pooling for the bullet
             Bullet bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+            bullet.Spawn();
             bullet.Shoot(shootingForce);
         }
     }
