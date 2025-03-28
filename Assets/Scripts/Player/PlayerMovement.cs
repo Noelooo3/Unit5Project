@@ -12,7 +12,6 @@ public class PlayerMovement : NetworkBehaviour
     private RaycastHit _hit;
     
     private void Start()
-    
     {
         _groundLayerMask = LayerMask.GetMask("Ground");
     }
@@ -23,12 +22,20 @@ public class PlayerMovement : NetworkBehaviour
             return;
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 lookPosition = Vector3.zero;
         if (Physics.Raycast(ray, out _hit, 1000f, _groundLayerMask))
         {
-            this.gameObject.transform.LookAt(_hit.point);
+            lookPosition = _hit.point;
         }
-        
         float vertical = Input.GetAxis("Vertical");
-        this.gameObject.transform.Translate(Vector3.forward * vertical * Speed * Time.deltaTime);
+        MoveServerRpc(lookPosition, vertical * Time.deltaTime);
+    }
+
+    
+    [ServerRpc] 
+    private void MoveServerRpc(Vector3 lookPosition, float vertical)
+    {
+        this.gameObject.transform.LookAt(lookPosition);
+        this.gameObject.transform.Translate(Vector3.forward * vertical * Speed);
     }
 }

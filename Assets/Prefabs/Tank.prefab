@@ -12,10 +12,12 @@ GameObject:
   - component: {fileID: 1319988051355169643}
   - component: {fileID: 1492165808186461438}
   - component: {fileID: 8972371213259036981}
-  - component: {fileID: 5026438631237175943}
+  - component: {fileID: 5377956509783494711}
+  - component: {fileID: 6246907207825691262}
+  - component: {fileID: 5749815620675498229}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +89,7 @@ MonoBehaviour:
     type: 3}
   shootingPoint: {fileID: 7940602744231227786}
   shootingForce: 3000
---- !u!114 &5026438631237175943
+--- !u!114 &5377956509783494711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623999202519481840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a342a0c8a0fa74a8ac5cd24714158b, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseUnreliableDeltas: 0
@@ -118,6 +120,39 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!65 &6246907207825691262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623999202519481840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.23, y: 2.64, z: 3.77}
+  m_Center: {x: 0, y: 1.34, z: 0}
+--- !u!114 &5749815620675498229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623999202519481840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f342e4e6c7a51a4b8d017e3a9f30a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1783546558292719602
 GameObject:
   m_ObjectHideFlags: 0
