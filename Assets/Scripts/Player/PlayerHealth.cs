@@ -21,6 +21,11 @@ public class PlayerHealth : NetworkBehaviour
         if (shooterId == OwnerClientId)
             return;
         _health.Value -= 20;
+        if (_health.Value <= 0)
+        {
+            this.NetworkObject.Despawn();
+            GameManager.Instance.OnPlayerDespawned(OwnerClientId);
+        }
     }
 
     private void OnHealthValueChanged(int oldValue, int newValue)

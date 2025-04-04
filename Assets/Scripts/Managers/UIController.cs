@@ -29,6 +29,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     
     [SerializeField] private TMP_InputField nameInputField;
+    [SerializeField] private TMP_InputField codeInputField;
+
+    [SerializeField] private TMP_Text gameCodeText;
     
     private void Start()
     {
@@ -38,14 +41,15 @@ public class UIController : MonoBehaviour
 
     public void StartAsHost()
     {
-        NetworkManager.Singleton.StartHost();
+        RelayManager.Instance.CreateRelay();
         gameMenuPanel.SetActive(false);
         inGamePanel.SetActive(true);
     }
 
     public void StartAsClient()
     {
-        NetworkManager.Singleton.StartClient();
+        string joinCode = codeInputField.text;
+        RelayManager.Instance.JoinRelay(joinCode);
         gameMenuPanel.SetActive(false);
         inGamePanel.SetActive(true);
     }
@@ -53,6 +57,17 @@ public class UIController : MonoBehaviour
     public string GetName()
     {
         return nameInputField.text;
+    }
+
+    public void SetCode(string code)
+    {
+        gameCodeText.text = code;
+    }
+    
+    public void OnGameOver()
+    {
+        gameMenuPanel.SetActive(true);
+        inGamePanel.SetActive(false);
     }
 }
 

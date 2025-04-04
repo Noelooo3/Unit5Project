@@ -10,7 +10,7 @@ public class Bullet : NetworkBehaviour
     [SerializeField] private Rigidbody rigidbody;
 
     private ulong _shooterId;
-    
+
     public void Spawn(ulong shooterId, float force)
     {
         _shooterId = shooterId;
